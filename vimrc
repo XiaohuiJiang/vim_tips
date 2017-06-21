@@ -352,7 +352,7 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 if has("cscope")
         set csprg=/usr/bin/cscope
-        set csto=1
+        set csto=0
         set cst
         set nocsverb
         " add any database in current directory
