@@ -30,16 +30,17 @@ http://blog.csdn.net/luckywang1103/article/details/44181557
 http://easwy.com/blog/archives/advanced-vim-skills-cscope/
 https://vim.sourceforge.io/scripts/script.php?script_id=273 (taglist)
 http://www.vim.org/scripts/script.php?script_id=1658  (Nerdtree, optional)
-# fine all files
+### fine all files
 find . –type f > cscope.files
-# find according to subfix
+### find according to subfix
 find . -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.cc"  -o -name "*.hh" > cscope.files
-#create index file
+### create index file
 cscope -bkq -i cscope.files
-#for C++ tags
+### for C++ tags
 ctags -R --c++-kinds=+px --fields=+iaS --extra=+q 
-#for C tags
+### for C tags
 ctags -R
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " cscope setting
@@ -65,3 +66,4 @@ nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+
