@@ -71,8 +71,8 @@ func SetTitle()
         if &filetype == 'sh'
                 call setline(1,"\#########################################################################")
                 call append(line("."), "\# File Name: ".expand("%"))
-                call append(line(".")+1, "\# Author: ma6174")
-                call append(line(".")+2, "\# mail: ma6174@163.com")
+                call append(line(".")+1, "\# Author: Xiaohui Jiang")
+                call append(line(".")+2, "\# mail: Xiaohui.Jiang@emc.com")
                 call append(line(".")+3, "\# Created Time: ".strftime("%c"))
                 call append(line(".")+4, "\#########################################################################")
                 call append(line(".")+5, "\#!/bin/bash")
@@ -80,8 +80,8 @@ func SetTitle()
         else
                 call setline(1, "/*************************************************************************")
                 call append(line("."), "        > File Name: ".expand("%"))
-                call append(line(".")+1, "      > Author: ma6174")
-                call append(line(".")+2, "      > Mail: ma6174@163.com ")
+                call append(line(".")+1, "      > Author: Xiaohui Jiang")
+                call append(line(".")+2, "      > Mail: Xiaohui.Jiang@emc.com ")
                 call append(line(".")+3, "      > Created Time: ".strftime("%c"))
                 call append(line(".")+4, " ************************************************************************/")
                 call append(line(".")+5, "")
@@ -297,18 +297,21 @@ match WhitespaceEOL /\s\+$/
 ""set listchars=tab:>-,trail:-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" ctags -R
 "" 字段补全
 ""为了使得字段补全有效，在生成tags时需要一些额外的参数，推荐的c++参数主要是：
-"" ctags -R --c++-kinds=+px --fields=+iaS --extra=+q
+"" find $(pwd) -name "*.cpp" -o -name "*.hpp" -o -name "*.c" -o -name "*.h" -o -name "*.cxx" -o -name "*.hxx" > cscope.files
+"" cscope -bkq -i cscope.files
+"" ctags -R --c++-kinds=+px --fields=+iaS --extra=+q -L cscope.files
 ""其中：
 ""选项c++-kinds 用于指定C++语言的 tags记录类型,  --c-kinds用于指定c语言的，  通用格式是  --{language}-kinds
 ""选项 fileds 用于指定每条标记的扩展字段域
 ""extra 选项用于增加额外的条目:   f表示为每个文件增加一个条目，  q为每个类增加一个条目
 
+set tags=/home/c4dev/git/unity00/tags
+
 ""如果经常在不同工程里查阅代码，那么可以在~/.vimrc中添加：
-set tags=tags;
-set autochdir
+""set tags=tags;
+""set autochdir
 ""第一个命令里的分号是必不可少的，这个命令让vim首先在当前目录里寻找tags文件，如果没有找到tags文件，就到父目录中查找，一直向上递归。因为tags文件中记录的路径总是相对于tags文件所在的路径，所以要使用第二个设置项来改变vim的当前目录。
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "taglist"
@@ -356,8 +359,8 @@ if has("cscope")
         set cst
         set nocsverb
         " add any database in current directory
-        if filereadable("cscope.out")
-                cs add cscope.out
+        if filereadable("/home/c4dev/git/unity00/cscope.out")
+                cs add /home/c4dev/git/unity00/cscope.out
         endif
         set csverb
 endif
