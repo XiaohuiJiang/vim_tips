@@ -297,43 +297,7 @@ match WhitespaceEOL /\s\+$/
 ""set listchars=tab:>-,trail:-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" 字段补全
-""为了使得字段补全有效，在生成tags时需要一些额外的参数，推荐的c++参数主要是：
-"" find $(pwd) -name "*.cpp" -o -name "*.hpp" -o -name "*.c" -o -name "*.h" -o -name "*.cxx" -o -name "*.hxx" > cscope.files
-"" cscope -bkq -i cscope.files
-"" ctags -R --c++-kinds=+px --fields=+iaS --extra=+q -L cscope.files
-""其中：
-""选项c++-kinds 用于指定C++语言的 tags记录类型,  --c-kinds用于指定c语言的，  通用格式是  --{language}-kinds
-""选项 fileds 用于指定每条标记的扩展字段域
-""extra 选项用于增加额外的条目:   f表示为每个文件增加一个条目，  q为每个类增加一个条目
 
-set tags=/home/c4dev/git/unity00/tags
-
-""如果经常在不同工程里查阅代码，那么可以在~/.vimrc中添加：
-""set tags=tags;
-""set autochdir
-""第一个命令里的分号是必不可少的，这个命令让vim首先在当前目录里寻找tags文件，如果没有找到tags文件，就到父目录中查找，一直向上递归。因为tags文件中记录的路径总是相对于tags文件所在的路径，所以要使用第二个设置项来改变vim的当前目录。
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"taglist"
-"设置ctags路径
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
-"启动vim后自动打开taglist窗口
-"let Tlist_Auto_Open = 1
-""不同时显示多个文件的tag，仅显示一个
-let Tlist_Show_One_File = 1
-"taglist为最后一个窗口时，退出vim
-"let Tlist_Exit_OnlyWindow = 1
-""taglist窗口显示在右侧，缺省为左侧
-let Tlist_Use_Right_Window =1
-"设置taglist窗口大小
-""let Tlist_WinHeight = 100
-let Tlist_WinWidth = 40
-"设置taglist打开关闭的快捷键F8
-noremap <F8> :TlistToggle<CR>
-""更新ctags标签文件快捷键设置
-""noremap <F6> :!ctags -R<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "NERDtee设定
 let NERDChristmasTree=1
 let NERDTreeAutoCenter=1
@@ -359,8 +323,8 @@ if has("cscope")
         set cst
         set nocsverb
         " add any database in current directory
-        if filereadable("/home/c4dev/git/unity00/cscope.out")
-                cs add /home/c4dev/git/unity00/cscope.out
+        if filereadable("cscope.out")
+                cs add cscope.out
         endif
         set csverb
 endif
@@ -373,4 +337,41 @@ nmap <C-\>e :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" 字段补全
+""为了使得字段补全有效，在生成tags时需要一些额外的参数，推荐的c++参数主要是：
+"" find $(pwd) -name "*.cpp" -o -name "*.hpp" -o -name "*.c" -o -name "*.h" -o -name "*.cxx" -o -name "*.hxx" > cscope.files
+"" cscope -bkq -i cscope.files
+"" ctags -R --c++-kinds=+px --fields=+iaS --extra=+q -L cscope.files
+""其中：
+""选项c++-kinds 用于指定C++语言的 tags记录类型,  --c-kinds用于指定c语言的，  通用格式是  --{language}-kinds
+""选项 fileds 用于指定每条标记的扩展字段域
+""extra 选项用于增加额外的条目:   f表示为每个文件增加一个条目，  q为每个类增加一个条目
+
+""set tags=/home/c4dev/git/unity00/tags
+
+""如果经常在不同工程里查阅代码，那么可以在~/.vimrc中添加：
+set tags=tags;
+set autochdir
+""第一个命令里的分号是必不可少的，这个命令让vim首先在当前目录里寻找tags文件，如果没有找到tags文件，就到父目录中查找，一直向上递归。因为tags文件中记录的路径总是相对于tags文件所在的路径，所以要使用第二个设置项来改变vim的当前目录。
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"taglist"
+"设置ctags路径
+let Tlist_Ctags_Cmd = '/usr/bin/ctags'
+"启动vim后自动打开taglist窗口
+"let Tlist_Auto_Open = 1
+""不同时显示多个文件的tag，仅显示一个
+let Tlist_Show_One_File = 1
+"taglist为最后一个窗口时，退出vim
+"let Tlist_Exit_OnlyWindow = 1
+""taglist窗口显示在右侧，缺省为左侧
+let Tlist_Use_Right_Window =1
+"设置taglist窗口大小
+""let Tlist_WinHeight = 100
+let Tlist_WinWidth = 40
+"设置taglist打开关闭的快捷键F8
+noremap <F8> :TlistToggle<CR>
+""更新ctags标签文件快捷键设置
+""noremap <F6> :!ctags -R<CR>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
