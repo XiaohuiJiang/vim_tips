@@ -1,8 +1,8 @@
-vim分割窗口、标签页与Quickfix窗口 
+vim分割窗口、标签页与Quickfix窗口
 目录
 	• 1. 窗口分割
 	• 2. 标签页
- 
+
 
 正文
 vim支持窗口分割和标签页，合适地使用这两种特性可以使文字编辑工作更愉快。
@@ -81,4 +81,4 @@ gT	......上一个.........
 :tabs	显示当前标签页
 :help tab-page-intro	查询标签页相关命令
 
-From <https://www.cnblogs.com/zzqcn/p/4788754.html> 
+https://www.cnblogs.com/zzqcn/p/4788754.html

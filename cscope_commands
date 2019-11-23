@@ -16,3 +16,23 @@ help : Show this message              (Usage: help)
 kill : Kill a connection              (Usage: kill #)
 reset: Reinit all connections         (Usage: reset)
 show : Show connections               (Usage: show)
+
+在vim中使用cscope非常简单，首先调用"cscope add"命令添加一个cscope数据库，然后就可以调用"cscope find"命令进行查找了。vim支持8种cscope的查询功能，如下：
+	• s: 查找C语言符号，即查找函数名、宏、枚举值等出现的地方
+	• g: 查找函数、宏、枚举等定义的位置，类似ctags所提供的功能
+	• d: 查找本函数调用的函数
+	• c: 查找调用本函数的函数
+	• t: 查找指定的字符串
+	• e: 查找egrep模式，相当于egrep功能，但查找速度快多了
+	• f: 查找并打开文件，类似vim的find功能
+	• i: 查找包含本文件的文件
+
+From <https://blog.easwy.com/archives/advanced-vim-skills-cscope/>
+
+
+
+:clist 列举所有的查询结果
+:cnext
+:cprev
+:cc <number>  跳到数字对应的查询结果出
+
